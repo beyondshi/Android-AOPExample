@@ -6,9 +6,10 @@ import org.aspectj.tools.ajc.Main
 buildscript {
   repositories {
     mavenCentral()
+    google()
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:2.1.0'
+    classpath 'com.android.tools.build:gradle:4.1.2'
     classpath 'org.aspectj:aspectjtools:1.8.1'
   }
 }
@@ -17,10 +18,11 @@ apply plugin: 'com.android.library'
 
 repositories {
   mavenCentral()
+  google()
 }
 
 dependencies {
-  compile 'org.aspectj:aspectjrt:1.8.1'
+  api 'org.aspectj:aspectjrt:1.8.1'
 }
 
 android {
@@ -42,8 +44,7 @@ android.libraryVariants.all { variant ->
                      "-aspectpath", javaCompile.classpath.asPath,
                      "-d", javaCompile.destinationDir.toString(),
                      "-classpath", javaCompile.classpath.asPath,
-                     "-bootclasspath", plugin.project.android.bootClasspath.join(
-        File.pathSeparator)]
+                     "-bootclasspath", android.bootClasspath.join(File.pathSeparator)]
 
     MessageHandler handler = new MessageHandler(true);
     new Main().run(args, handler)
