@@ -9,6 +9,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
+import org.android10.gintonic.annotation.DebugTrace;
 
 /**
  *
@@ -26,9 +27,15 @@ public class MyRelativeLayout extends RelativeLayout {
         super(context, attrs, defStyle);
     }
 
+    @DebugTrace
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

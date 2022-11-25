@@ -21,8 +21,5 @@ public class LinearLayoutTestActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_linear_layout_test);
-
-        myLinearLayout = (LinearLayout) findViewById(R.id.linearLayoutOne);
-        myLinearLayout.invalidate();
     }
 }
